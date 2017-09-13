@@ -1,0 +1,39 @@
+{
+  "name": "contact",
+  "controller": "controller",
+  "base": "/api/contact",
+  "preSetup": [
+  ],
+  "postSetup": [
+  ],
+  "middleware": [],
+  "api": [
+    {
+      "name": "createContactWithAccountId",
+      "method": "post",
+      "path": "/",
+      "impl": "Contact.create",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "name": "listContact",
+      "method": "get",
+      "path": "/",
+      "impl": "Contact.list",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "name": "deleteContact",
+      "method": "delete",
+      "path": "/:id",
+      "impl": "Contact.deleteById",
+      "middleware": [
+        "auth"
+      ]
+    }
+  ]
+}

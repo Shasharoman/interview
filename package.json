@@ -1,0 +1,33 @@
+{
+  "name": "interview",
+  "version": "1.0.0",
+  "description": "just for interview.",
+  "main": "dist/framework/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc  --rootDir ./",
+    "start": "tsc  --rootDir ./ && cd dist/ && node framework/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/shasharoman/interview.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "shasharoman@gmail.com",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/shasharoman/interview#readme",
+  "dependencies": {
+    "@types/node": "^8.0.28",
+    "bluebird": "^3.5.0",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.2.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.31",
+    "mysql": "^2.14.1"
+  }
+}

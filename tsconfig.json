@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "removeComments": true,
+    "sourceMap": false
+  },
+  "include": [
+    "framework/**/*.ts",
+    "apps/**/*.ts",
+    "common/**/*.ts",
+    "lib/**/*.ts",
+    "middleware/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

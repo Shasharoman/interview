@@ -1,0 +1,42 @@
+{
+  "name": "account",
+  "controller": "controller",
+  "base": "/api/account",
+  "preSetup": [
+  ],
+  "postSetup": [
+  ],
+  "middleware": [],
+  "api": [
+    {
+      "name": "info",
+      "method": "get",
+      "path": "/",
+      "impl": "Account.get",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "name": "register",
+      "method": "post",
+      "path": "/register",
+      "impl": "Account.register"
+    },
+    {
+      "name": "login",
+      "method": "post",
+      "path": "/login",
+      "impl": "Account.login"
+    },
+    {
+      "name": "logout",
+      "method": [
+        "get",
+        "post"
+      ],
+      "path": "/logout",
+      "impl": "Account.logout"
+    }
+  ]
+}

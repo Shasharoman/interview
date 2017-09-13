@@ -1,0 +1,35 @@
+{
+  "name": "interview",
+  "env": "dev",
+  "baseDir": "/Users/shasha/ws/interview/",
+  "distDir": "/Users/shasha/ws/interview/dist/",
+  "appBaseDir": "/Users/shasha/ws/interview/apps/",
+  "appDistDir": "/Users/shasha/ws/interview/dist/apps/",
+  "middleware": [
+    "session",
+    "response",
+    "bodyParser"
+  ],
+  "listen": {
+    "ip": "0.0.0.0",
+    "port": "3000"
+  },
+  "apps": [
+    "account",
+    "contact"
+  ],
+  "mysql": {
+    "host": "docker",
+    "user": "root",
+    "password": " ",
+    "database": "interview"
+  },
+  "mongo": {
+    "host": "docker",
+    "database": "interview"
+  },
+  "redis": {
+    "host": "docker",
+    "port": "6379"
+  }
+}
