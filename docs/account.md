@@ -4,6 +4,7 @@
 ```
 url: /api/account
 method: get
+middleware: [auth]
 res: {
     code: number,
     result: {

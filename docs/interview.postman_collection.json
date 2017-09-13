@@ -1,0 +1,115 @@
+{
+	"variables": [],
+	"info": {
+		"name": "interview",
+		"_postman_id": "95df7574-b66c-585c-ded2-38dd48b6768b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "注册",
+			"request": {
+				"url": "https://amsimple.com/api/account/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"shasharoman@gmail.com\",\n\t\"nickname\": \"shasha\",\n\t\"password\": \"888888\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "登录",
+			"request": {
+				"url": "https://amsimple.com/api/account/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"shasharoman@gmail.com\",\n\t\"password\": \"888888\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "个人信息",
+			"request": {
+				"url": "https://amsimple.com/api/account",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "添加联系人",
+			"request": {
+				"url": "https://amsimple.com/api/contact",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"同学A\",\n\t\"phone\": \"18565663420\",\n\t\"address\": \"广东-深圳-南山\",\n\t\"comment\": \"好同学\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取联系人",
+			"request": {
+				"url": "https://amsimple.com/api/contact",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "删除联系人",
+			"request": {
+				"url": "https://amsimple.com/api/contact/59b93dce024a99074321a322",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "登出",
+			"request": {
+				"url": "https://amsimple.com/api/account/logout",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
