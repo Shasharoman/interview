@@ -1,13 +1,12 @@
 import * as _ from 'lodash';
 import * as fs from 'fs';
 import * as Promise from 'bluebird';
-import {Mysql, Mongo, Model, Proxy} from './dao';
+import {Mysql, Mongo, Model} from './dao';
 
 export namespace Common {
     export const mysql = Mysql;
     export const mongo = Mongo;
     export const model = Model;
-    export const proxy = Proxy;
 
     export const config = _loadConfig();
 
