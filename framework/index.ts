@@ -9,10 +9,10 @@ process.env.framework = __dirname;
 
 const config = loadConfig();
 
-export const common = config.commonPath ? require(path.join(config.distDir, config.commonPath)) : {init: Promise.resolve};
+export const common = config.commonPath ? require(path.join(config.distDir, config.commonPath)) : {init: Promise.resolve}
 
-export const mysql = lib.mysql;
-export const mongo = lib.mongo;
+export const mysql = lib.mysql
+export const mongo = lib.mongo
 
 lib.init(config).then(function () {
     return common.init();

@@ -1,4 +1,4 @@
-import * as service from '../service';
+import * as service from '../service'
 
 export namespace Contact {
     export function create(ctx, next) {

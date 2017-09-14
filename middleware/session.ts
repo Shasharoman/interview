@@ -1,6 +1,6 @@
-import * as session from 'koa-generic-session';
-import * as redisStore from'koa-redis';
-import * as _ from 'lodash';
+import * as session from 'koa-generic-session'
+import * as redisStore from'koa-redis'
+import * as _ from 'lodash'
 
 let defaultOptions = {
     host: 'localhost',

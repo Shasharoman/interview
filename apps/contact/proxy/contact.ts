@@ -1,4 +1,4 @@
-import * as Promise from 'bluebird';
+import * as Promise from 'bluebird'
 
 const framework = require(process.env.framework);
 const mongo = framework.mongo;

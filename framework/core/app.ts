@@ -1,8 +1,8 @@
-import * as path from 'path';
-import * as _ from 'lodash';
-import * as Router from 'koa-router';
-import * as Promise from 'bluebird';
-import * as fs from 'fs';
+import * as path from 'path'
+import * as _ from 'lodash'
+import * as Router from 'koa-router'
+import * as Promise from 'bluebird'
+import * as fs from 'fs'
 
 class App {
     public config;
@@ -98,4 +98,4 @@ class App {
     }
 }
 
-export {App};
+export {App}

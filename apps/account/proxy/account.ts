@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import * as _ from 'lodash'
 
 const framework = require(process.env.framework);
 const common = framework.common;

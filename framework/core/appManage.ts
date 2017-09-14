@@ -6,7 +6,7 @@ import * as Promise from 'bluebird'
 import {App} from './app'
 
 export namespace appManage {
-    export const koa = new Koa();
+    export const koa = new Koa()
 
     export function setupMiddleware(config): Promise {
         const middleware = require(path.join(config.distDir, 'middleware'));

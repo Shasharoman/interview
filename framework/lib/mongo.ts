@@ -1,6 +1,6 @@
-import * as Promise from 'bluebird';
-import * as _ from 'lodash';
-import {MongoClient, ObjectID} from 'mongodb';
+import * as Promise from 'bluebird'
+import * as _ from 'lodash'
+import {MongoClient, ObjectID} from 'mongodb'
 
 export namespace mongo {
     let connection;

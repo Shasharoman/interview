@@ -1,6 +1,6 @@
-import * as innerMysql from 'mysql';
-import * as _ from 'lodash';
-import * as Promise from 'bluebird';
+import * as innerMysql from 'mysql'
+import * as _ from 'lodash'
+import * as Promise from 'bluebird'
 
 export namespace mysql {
     let pool;
