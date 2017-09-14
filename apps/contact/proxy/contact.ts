@@ -1,7 +1,7 @@
 import * as Promise from 'bluebird';
-import {Common} from '../../../common';
 
-const mongo = Common.mongo;
+const framework = require(process.env.framework);
+const mongo = framework.mongo;
 
 export {
     createContact,

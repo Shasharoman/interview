@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc  --rootDir ./",
-    "start": "tsc  --rootDir ./ && cd dist/ && node framework/index.js"
+    "start": "tsc  --rootDir ./ && node dist/framework/index.js -c conf/dev.json"
   },
   "repository": {
     "type": "git",

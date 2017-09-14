@@ -1,7 +1,9 @@
 import * as Promise from 'bluebird';
 import * as proxy from '../proxy';
 import * as _ from 'lodash';
-import * as util from '../../../common/util';
+
+const framework = require(process.env.framework);
+const util = framework.common.util;
 
 export {
     createAccount,

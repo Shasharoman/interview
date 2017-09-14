@@ -5,6 +5,7 @@
   "distDir": "/Users/shasha/ws/interview/dist/",
   "appBaseDir": "/Users/shasha/ws/interview/apps/",
   "appDistDir": "/Users/shasha/ws/interview/dist/apps/",
+  "commonPath": "common/",
   "middleware": [
     "session",
     "response",

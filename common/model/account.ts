@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-export namespace AccountModel {
+export namespace account {
     const schema = {
         account: [
             ['id', 'INT UNSIGNED AUTO_INCREMENT PRIMARY KEY'],

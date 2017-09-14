@@ -1,21 +1,23 @@
-import * as mysql from 'mysql';
+import * as innerMysql from 'mysql';
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 
-export namespace Mysql {
+export namespace mysql {
     let pool;
 
-    export function init(options: object) {
+    export function init(options: object): Promise {
         if (pool) {
             return;
         }
 
-        pool = mysql.createPool(_.assign({
+        pool = innerMysql.createPool(_.assign({
             connectionLimit: 16,
             host: 'localhost',
             user: 'root',
             password: '',
         }, options));
+
+        return Promise.resolve();
     }
 
     export function execSql(sql: string, params: object): Promise {

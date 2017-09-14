@@ -1,8 +1,10 @@
 import * as _ from 'lodash';
-import {Common} from '../../../common';
 
-const mysql = Common.mysql;
-const accountFields = Common.model.tableFields.account;
+const framework = require(process.env.framework);
+const common = framework.common;
+
+const mysql = framework.mysql;
+const accountFields = common.model.tableFields.account;
 
 export {
     createAccount,

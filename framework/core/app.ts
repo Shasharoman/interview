@@ -3,8 +3,6 @@ import * as _ from 'lodash';
 import * as Router from 'koa-router';
 import * as Promise from 'bluebird';
 import * as fs from 'fs';
-import {Common} from "../common/index";
-import config = Common.config;
 
 class App {
     public config;
@@ -15,8 +13,8 @@ class App {
     private appMiddleware = {};
     private globalMiddleware = {};
 
+    // todo remove config dependencies
     constructor(koa, manifest, config) {
-        // todo verify manifest
         this.koa = koa;
         this.manifest = manifest;
         this.config = config;
@@ -78,7 +76,7 @@ class App {
                 }
 
                 _.each(_.isArray(item.method) ? item.method : [item.method], function (method) {
-                    self.router[method](item.path, impl(config));
+                    self.router[method](item.path, impl(self.config));
                 });
 
                 // self.router.use(item.path, impl(config));

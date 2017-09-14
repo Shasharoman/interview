@@ -2,8 +2,7 @@ import * as Promise from 'bluebird';
 import * as _ from 'lodash';
 import {MongoClient, ObjectID} from 'mongodb';
 
-export namespace Mongo {
-    // todo use connection pool impl.
+export namespace mongo {
     let connection;
 
     export function init(options): Promise {
