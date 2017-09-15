@@ -37,5 +37,19 @@
       "path": "/logout",
       "impl": "Account.logout"
     }
+  ],
+  "service": [
+    {
+      "name": "createAccount",
+      "impl": "createAccount"
+    },
+    {
+      "name": "verifyPasswordByUsername",
+      "impl": "verifyPasswordByUsername"
+    },
+    {
+      "name": "accountById",
+      "impl": "accountById"
+    }
   ]
 }

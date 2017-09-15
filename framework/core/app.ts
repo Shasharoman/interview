@@ -3,11 +3,13 @@ import * as Router from 'koa-router'
 import * as Promise from 'bluebird'
 
 class App {
+    private name;
     private koa;
     private manifest;
     private router;
 
-    constructor(koa, manifest) {
+    constructor(name, manifest, koa) {
+        this.name = name;
         this.koa = koa;
         this.manifest = manifest;
 

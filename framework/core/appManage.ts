@@ -1,5 +1,4 @@
 import * as Koa from 'koa'
-import * as fs from 'fs'
 import * as Promise from 'bluebird'
 import * as middleware from '../middleware'
 import * as _ from 'lodash'
@@ -9,6 +8,8 @@ import {App} from './app'
 
 class AppManage {
     private koa;
+    private apps = [];
+    private serviceCache = {};
 
     constructor() {
         this.koa = new Koa();
@@ -30,35 +31,74 @@ class AppManage {
         const self = this;
 
         items = _.map(items, function (item) {
-            item.manifest = JSON.parse(fs.readFileSync(path.join(item.path, 'manifest.json')).toString());
-            item.controller = require(path.join(item.distPath, item.manifest.controller || 'controller'));
+            item.manifest = self.trimManifest(item.manifest, item.path);
 
-            item.manifest.api = _.map(item.manifest.api, function (api) {
-                api.impl = _.get(item.controller, api.impl);
+            return item;
+        });
 
+        return Promise.each(items, function (item) {
+            return new App(item.name, item.manifest, self.koa).init();
+        }).then(function (apps) {
+            self.apps = apps;
+
+            return Promise.resolve(self.koa);
+        }).catch(function (err) {
+            console.error(err);
+            return Promise.reject(err.toString());
+        });
+    }
+
+    public serviceCall(appName: string, serviceName: string): Promise {
+        let args = _.slice(arguments, 2);
+
+        if (this.serviceCache[appName] && _.isFunction(this.serviceCache[appName][serviceName])) {
+            return this.serviceCache[appName][serviceName].apply(null, args);
+        }
+
+        const app = _.find(this.apps, function (app) {
+            return app.name === appName;
+        });
+        if (_.isEmpty(app)) {
+            return Promise.reject('service not found by appName: ' + appName);
+        }
+
+        const service = _.find(app.manifest.service, function (item) {
+            return item.name === serviceName
+        });
+        if (_.isEmpty(service)) {
+            return Promise.reject('service not found by serviceName: ' + serviceName);
+        }
+
+        if (!this.serviceCache[appName]) {
+            this.serviceCache[appName] = {};
+        }
+        this.serviceCache[appName][serviceName] = service.impl;
+
+        return this.serviceCache[appName][serviceName].apply(null, args);
+    }
+
+    private trimManifest(manifest, appPath): object {
+        let controller = require(path.join(appPath, 'controller'));
+        let service = require(path.join(appPath, 'service'));
+
+        return _.assign({}, manifest, {
+            api: _.map(manifest.api, function (api) {
+                api.impl = _.get(controller, api.impl);
                 api.middleware = _.map(api.middleware, function (one) {
                     one = _.isString(one) ? {name: one} : one;
                     return middleware[one.name](one.options);
                 });
 
                 return api;
-            });
-
-            item.manifest.middleware = _.map(item.manifest.middleware, function (one) {
+            }),
+            middleware: _.map(manifest.middleware, function (one) {
                 one = _.isString(one) ? {name: one} : one;
                 return middleware[one.name](one.options);
-            });
-
-            return item;
-        });
-
-        return Promise.each(items, function (item) {
-            return new App(self.koa, item.manifest).init();
-        }).then(function () {
-            return Promise.resolve(self.koa);
-        }).catch(function (err) {
-            console.error(err);
-            return Promise.reject(err.toString());
+            }),
+            service: _.map(manifest.service, function (item) {
+                item.impl = _.get(service, item.impl);
+                return item;
+            })
         });
     }
 }

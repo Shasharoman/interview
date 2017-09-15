@@ -8,5 +8,7 @@ export * from './mysql'
 export function init(config): Promise {
     return mysql.init(config.mysql).then(function () {
         return mongo.init(config.mongo);
+    }).then(function () {
+
     });
 }
