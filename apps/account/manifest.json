@@ -1,6 +1,5 @@
 {
   "name": "account",
-  "controller": "controller",
   "base": "/api/account",
   "preSetup": [
   ],

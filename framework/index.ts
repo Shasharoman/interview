@@ -3,23 +3,32 @@ import * as _ from 'lodash'
 import * as fs from 'fs'
 import * as lib from './lib'
 import * as path from 'path'
-import {appManage} from './core'
+import {AppManage} from './core'
 
 process.env.framework = __dirname;
 
 const config = loadConfig();
+const appManage = new AppManage();
 
 export const common = config.commonPath ? require(path.join(config.distDir, config.commonPath)) : {init: Promise.resolve}
 
-export const mysql = lib.mysql
-export const mongo = lib.mongo
+export const mysql = lib.mysql;
+export const mongo = lib.mongo;
 
 lib.init(config).then(function () {
     return common.init();
 }).then(function () {
-    return appManage.setupMiddleware(config);
+    return appManage.setupMiddleware(config.middleware);
 }).then(function () {
-    return appManage.setupApp(config);
+    return appManage.setupApp(_.map(config.apps, function (item) {
+        return {
+            name: item,
+            path: path.join(config.appBaseDir, item),
+            distPath: path.join(config.appDistDir, item)
+        };
+    }));
+}).then(function (koa) {
+    koa.listen(config.listen.port, config.listen.ip);
 });
 
 function loadConfig() {

@@ -1,15 +1,17 @@
-import * as session from 'koa-generic-session'
+import * as innerSession from 'koa-generic-session'
 import * as redisStore from'koa-redis'
 import * as _ from 'lodash'
 
-let defaultOptions = {
+let defaultStore = {
     host: 'localhost',
     port: 6379
 };
 
-export default function (options) {
-    return session({
-        store: redisStore(_.assign(defaultOptions, options.config.redis)),
+export function session(options) {
+    options = options || {};
+
+    return innerSession({
+        store: redisStore(_.assign(defaultStore, options.store)),
         cookie: {
             path: '/',
             httpOnly: true,

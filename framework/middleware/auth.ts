@@ -1,4 +1,4 @@
-export default function () {
+export function auth() {
     return function (ctx, next) {
         if (ctx.session && ctx.session.accountId) {
             return next();
@@ -6,4 +6,4 @@ export default function () {
 
         ctx.status = 401;
     };
-};
+}

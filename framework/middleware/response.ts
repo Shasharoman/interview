@@ -1,4 +1,4 @@
-export default function () {
+export function response() {
     return function (ctx, next) {
         let headers = {
             'Content-Type': 'application/javascript',
@@ -27,4 +27,4 @@ export default function () {
 
         return next();
     };
-};
+}

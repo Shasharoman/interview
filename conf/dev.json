@@ -7,7 +7,15 @@
   "appDistDir": "/Users/shasha/ws/interview/dist/apps/",
   "commonPath": "common/",
   "middleware": [
-    "session",
+    {
+      "name": "session",
+      "options": {
+        "store": {
+          "host": "docker",
+          "port": "6379"
+        }
+      }
+    },
     "response",
     "bodyParser"
   ],
