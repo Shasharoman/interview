@@ -1,6 +1,5 @@
 # for interview
-部署域名：https://amsimple.com
-
+code mao interview question.
 
 ## setup steps
 -   modify config file: `conf/dev.json`
